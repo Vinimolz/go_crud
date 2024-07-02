@@ -1,0 +1,48 @@
+{{define "Edit"}}
+
+{{template "_header"}}
+<body>
+
+    {{template "_navbar"}}
+
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-5">Edit Book</h1>
+                <p class="lead">Add the updated details</p>
+            </div>
+        </div>
+        <form method="POST" action="edit?id={{.Book_id}}">
+            <input type="hidden" name="id" value="{{.Book_id}}">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="Name">Title:</label>
+                        <input type="text" name="title" class="form-control" value="{{.Title}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="Description">Author:</label>
+                        <input type="text" name="author" class="form-control" value="{{.Author}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="Price">Quantity:</label>
+                        <input type="number" name="quantity" class="form-control" step="0.01" value="{{.Quantity}}">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" value="save" class="btn btn-success">Save</button>
+            <a class="btn btn-info" href="/">Return</a>
+        </form>
+    </div>
+</body>
+</html>
+
+{{end}}

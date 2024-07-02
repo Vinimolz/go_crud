@@ -1,0 +1,49 @@
+{{define "Home"}}
+
+{{template "_header"}}
+
+<body>
+
+{{template "_navbar"}}
+
+    <div class="container">
+        <section class="card">
+            <div>
+                <table class="table table-striped table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range .}}
+                        <tr>
+                            <td>{{.Title}}</td>
+                            <td>{{.Author}}</td>
+                            <td>{{.Quantity}}</td>
+                            <td><a href="/edit?id={{.Book_id}}" class="btn btn-info">Edit</a></td>
+                            <td><button onClick = "onDelete('{{.Book_id}}')" class = "btn btn-danger">Delete</button></td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <div class="card-footer">
+            <a href="/create" class="btn btn-primary mb-2">New Product</a>
+        </div>
+    </div>
+</body>
+<script>
+    function onDelete(id) {
+        let answer = confirm("Are you sure you want to delete this item?")
+
+        if(answer === true){
+            window.location = "/delete?id=" + id
+        }
+    }
+</script>
+</html>
+{{end}}
